@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Ad Manager Set Targeting</title>
+  <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+  <script>
+    window.googletag = window.googletag || { cmd: [] };
+    googletag.cmd.push(function () {
+      //set ad uunit level targeting
+      googletag.defineSlot('/19968336/test_Ad_unit', [[300, 250]], 'test_Ad_unit')
+        .addService(googletag.pubads())
+        .setTargeting("position", "btf");//targeting line, first argument is key and second is value
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+
+    // set page level targeting
+    // apliying to all ad units
+    googletag.cmd.push(function () {
+      googletag.pubads().setTargeting('page_type', 'article');//first argument is key and second is value
+      googletag.pubads().setTargeting('page_path_name', window.location.pathname);//first argument is key and second is value
+    });
+  </script>
+</head>
+
+<body>
+  <div id="test_Ad_unit">
+  </div>
+</body>
+
+</html>
